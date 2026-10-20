@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="周庭如 Tingru Chou｜AI 應用、創意企劃與數位內容創作。">
+  <title>周庭如 Tingru Chou｜AI 應用與創意企劃</title>
+  <style>
+    :root {
+      --cream: #fffaf0;
+      --paper: #fffdf8;
+      --yellow: #f4c85c;
+      --yellow-dark: #d9a82d;
+      --ink: #29271f;
+      --muted: #716d62;
+      --line: #e9e1d0;
+      --sage: #dce5d3;
+      --peach: #f5ded0;
+      --shadow: 0 18px 50px rgba(83, 68, 32, .09);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 90% 5%, rgba(244, 200, 92, .18), transparent 32rem),
+        var(--cream);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 10; padding: 14px 0; backdrop-filter: blur(14px); }
+    nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 12px 18px; background: rgba(255,253,248,.9); border: 1px solid var(--line);
+      border-radius: 18px; box-shadow: 0 6px 24px rgba(83,68,32,.06);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; white-space: nowrap; }
+    .brand-mark {
+      display: grid; width: 38px; height: 38px; place-items: center;
+      border-radius: 13px; background: var(--yellow); color: #514017; font-size: 19px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 650; }
+    .nav-links a:hover { color: var(--yellow-dark); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .lang-btn {
+      cursor: pointer; border: 1px solid var(--line); border-radius: 999px;
+      background: white; padding: 8px 13px; font-size: 13px; font-weight: 700;
+    }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 19px; border: 1px solid transparent; border-radius: 999px;
+      background: var(--ink); color: white; font-weight: 700; transition: .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(41,39,31,.16); }
+    .button.light { background: white; color: var(--ink); border-color: var(--line); }
+    .button.gold { background: var(--yellow); color: #332a14; }
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; padding: 76px 0 88px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px;
+      border: 1px solid #ead9a9; border-radius: 999px; background: #fff7df;
+      color: #775d20; font-size: 13px; font-weight: 750;
+    }
+    h1 { margin: 20px 0 18px; font-size: clamp(42px, 6.3vw, 72px); line-height: 1.18; letter-spacing: -.045em; }
+    h1 .highlight { position: relative; white-space: nowrap; }
+    h1 .highlight::after {
+      position: absolute; content: ""; z-index: -1; left: -3px; right: -3px; bottom: 2px;
+      height: 35%; background: var(--yellow); border-radius: 7px; transform: rotate(-1.5deg);
+    }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .hero-art {
+      position: relative; min-height: 420px; display: grid; place-items: center;
+      border: 1px solid #eadfc7; border-radius: 38px; overflow: hidden;
+      background: linear-gradient(145deg, #fff3c8, #f8eadb 56%, #e9eee2);
+      box-shadow: var(--shadow);
+    }
+    .hero-art::before, .hero-art::after { content: ""; position: absolute; border-radius: 50%; }
+    .hero-art::before { width: 280px; height: 280px; background: rgba(255,255,255,.54); top: 55px; left: 50%; transform: translateX(-50%); }
+    .hero-art::after { width: 170px; height: 170px; border: 1px solid rgba(120,102,53,.18); right: -44px; bottom: -36px; }
+    .orb { position: absolute; border-radius: 50%; background: rgba(255,255,255,.65); }
+    .orb.one { width: 18px; height: 18px; top: 54px; right: 65px; }
+    .orb.two { width: 10px; height: 10px; left: 45px; bottom: 80px; }
+    .portrait {
+      position: relative; z-index: 1; width: 205px; height: 250px; margin-top: 32px;
+      display: grid; place-items: center; border: 5px solid rgba(255,255,255,.9);
+      border-radius: 48% 48% 35% 35%; background: linear-gradient(155deg, #dfb48b, #b98059);
+      box-shadow: 0 18px 35px rgba(92,65,35,.19); font-size: 100px;
+    }
+    .portrait-label {
+      position: absolute; z-index: 2; right: 24px; bottom: 26px; padding: 13px 16px;
+      border: 1px solid rgba(255,255,255,.8); border-radius: 16px; background: rgba(255,253,248,.88);
+      font-size: 13px; font-weight: 750;
+    }
+    section { scroll-margin-top: 100px; }
+    .section { padding: 74px 0; }
+    .section-head { max-width: 700px; margin: 0 auto 38px; text-align: center; }
+    .section-kicker { color: #a27b20; font-size: 13px; letter-spacing: .13em; font-weight: 800; text-transform: uppercase; }
+    h2 { margin: 8px 0 12px; font-size: clamp(30px, 4vw, 46px); line-height: 1.28; letter-spacing: -.03em; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .service-card, .project-card, .timeline-card, .about-panel {
+      border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: 0 8px 28px rgba(83,68,32,.04);
+    }
+    .service-card { padding: 24px; transition: .2s ease; }
+    .service-card:hover, .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .service-icon {
+      display: grid; width: 48px; height: 48px; place-items: center; margin-bottom: 15px;
+      border-radius: 16px; background: #fff1c7; font-size: 22px;
+    }
+    .service-card:nth-child(2) .service-icon { background: #f7e4d8; }
+    .service-card:nth-child(3) .service-icon { background: #e6eddc; }
+    .service-card:nth-child(4) .service-icon { background: #e7e5f4; }
+    .service-card:nth-child(5) .service-icon { background: #f3e6c8; }
+    .service-card h3, .project-card h3 { margin: 0 0 8px; font-size: 19px; }
+    .service-card p, .project-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: stretch; }
+    .about-visual {
+      min-height: 365px; display: grid; place-items: center; border-radius: 30px;
+      background: linear-gradient(145deg, #e9eee2, #fff0cf); font-size: 110px;
+    }
+    .about-panel { padding: 34px; }
+    .about-panel p { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .chip { padding: 7px 12px; border-radius: 999px; background: #f3efe5; color: #625d51; font-size: 13px; font-weight: 700; }
+    .experience-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .timeline-card { padding: 19px 21px; display: flex; gap: 14px; align-items: flex-start; }
+    .timeline-dot { flex: 0 0 12px; height: 12px; margin-top: 8px; border-radius: 50%; background: var(--yellow-dark); box-shadow: 0 0 0 5px #fbf0d1; }
+    .timeline-card strong { display: block; margin-bottom: 3px; }
+    .timeline-card span { color: var(--muted); font-size: 14px; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { overflow: hidden; transition: .2s ease; }
+    .project-visual {
+      min-height: 205px; display: grid; place-items: center; padding: 24px;
+      background: linear-gradient(135deg, #f5dfae, #fcf3dd);
+    }
+    .project-card:nth-child(2) .project-visual { background: linear-gradient(135deg, #e9e1f4, #f8f1e8); }
+    .project-card:nth-child(3) .project-visual { background: linear-gradient(135deg, #dce8d5, #f8eddb); }
+    .project-card:nth-child(4) .project-visual { background: linear-gradient(135deg, #f2ddce, #fff2d7); }
+    .project-card:nth-child(5) .project-visual { background: linear-gradient(135deg, #dce7eb, #f9edcf); }
+    .mockup {
+      width: min(100%, 340px); min-height: 130px; padding: 18px; border: 1px solid rgba(80,70,50,.12);
+      border-radius: 16px; background: rgba(255,253,248,.83); box-shadow: 0 10px 25px rgba(83,68,32,.1);
+    }
+    .mock-line { height: 9px; width: 72%; margin: 9px 0; border-radius: 9px; background: #e8dfcc; }
+    .mock-line.short { width: 42%; }
+    .mock-block { height: 48px; margin-top: 15px; border-radius: 10px; background: linear-gradient(90deg, #f3d885, #f4e9cb); }
+    .project-card:nth-child(2) .mock-block { background: linear-gradient(90deg, #d4c8ed, #f0e4da); }
+    .project-card:nth-child(3) .mock-block { background: linear-gradient(90deg, #cbd9bc, #f2e5c7); }
+    .project-card:nth-child(4) .mock-block { background: linear-gradient(90deg, #e7c4ab, #f5dfc6); }
+    .project-card:nth-child(5) .mock-block { background: linear-gradient(90deg, #c8dce1, #f0dfb0); }
+    .project-info { padding: 22px; }
+    .tag { display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; background: #f4efdf; color: #786533; font-size: 11px; font-weight: 800; }
+    .project-link { display: inline-block; margin-top: 14px; color: #8e6a19; font-size: 13px; font-weight: 800; }
+    .project-link.disabled { color: #969084; cursor: default; }
+    .contact-box {
+      padding: 48px 28px; text-align: center; border: 1px solid #ead9a9; border-radius: 30px;
+      background: linear-gradient(135deg, #fff2cb, #fffaf0 58%, #edf0e5);
+    }
+    .contact-box p { color: var(--muted); }
+    footer { padding: 26px 0 38px; color: var(--muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; }
+    [data-en] { display: none; }
+    body.english [data-zh] { display: none; }
+    body.english [data-en] { display: initial; }
+    body.english .block-en { display: block; }
+    .block-en { display: none; }
+    @media (max-width: 800px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 12px; }
+      .hero { grid-template-columns: 1fr; gap: 35px; padding-top: 48px; }
+      .hero-art { min-height: 350px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { min-height: 250px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .nav-links { display: none; }
+      .hero { padding: 34px 0 58px; }
+      .hero-copy { font-size: 15px; }
+      .hero-art { min-height: 300px; }
+      .portrait { transform: scale(.82); }
+      .services-grid, .portfolio-grid, .experience-list { grid-template-columns: 1fr; }
+      .section { padding: 54px 0; }
+      .about-panel { padding: 24px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav aria-label="主要導覽">
+        <a class="brand" href="#home"><span class="brand-mark">T</span><span>庭如 Tingru</span></a>
+        <div class="nav-links">
+          <a href="#about"><span data-zh>關於我</span><span data-en>About</span></a>
+          <a href="#services"><span data-zh>服務項目</span><span data-en>Services</span></a>
+          <a href="#portfolio"><span data-zh>作品集</span><span data-en>Portfolio</span></a>
+          <a href="#experience"><span data-zh>經歷</span><span data-en>Experience</span></a>
+        </div>
+        <div class="nav-actions">
+          <button class="lang-btn" id="languageToggle" type="button" aria-label="切換中英文">EN</button>
+          <a class="button gold" href="#contact"><span data-zh>聯絡我</span><span data-en>Contact</span></a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <span class="eyebrow"><span>✦</span><span data-zh>AI 應用 × 創意企劃</span><span data-en>AI × Creative Planning</span></span>
+        <h1><span data-zh>探索 AI 的可能性，<br>讓創意成為<span class="highlight">現實</span>。</span><span data-en>Exploring AI,<br>bringing ideas to <span class="highlight">life</span>.</span></h1>
+        <p class="hero-copy">
+          <span data-zh>我是周庭如，熱衷於 AI 工具應用、創意企劃與數位內容創作。從提示詞設計、AI 圖像與影片生成，到品牌視覺、行銷內容及 LINE OA 流程規劃，我持續探索科技如何讓創作更有效率，也讓想法更容易實現。</span>
+          <span data-en>I’m Tingru Chou, an AI application and creative planning practitioner based in New Taipei City, Taiwan. I explore how AI can turn ideas into visual design, brand concepts, digital content, and practical workflows.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#portfolio"><span data-zh>看看我的作品</span><span data-en>Explore my work</span>　↘</a>
+          <a class="button light" href="#about"><span data-zh>認識我</span><span data-en>About me</span></a>
+        </div>
+        <p style="font-size:13px;color:#827d71;margin-top:20px"><span data-zh>📍 台灣・新北市</span><span data-en>📍 New Taipei City, Taiwan</span></p>
+      </div>
+      <div class="hero-art" aria-label="溫暖色調的個人品牌視覺">
+        <span class="orb one"></span><span class="orb two"></span>
+        <div class="portrait" aria-hidden="true">👩🏻‍💻</div>
+        <div class="portrait-label"><span data-zh>創意 × AI × 實踐</span><span data-en>Creative × AI × Practice</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span data-zh>我能協助的事</span><span data-en>What I can help with</span></div>
+          <h2><span data-zh>讓想法找到實踐的方式</span><span data-en>Turning ideas into practical experiences</span></h2>
+          <p><span data-zh>結合 AI 工具、內容企劃與使用者思維，讓創意更容易落地。</span><span data-en>Combining AI tools, content planning, and a user-centered approach.</span></p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card"><div class="service-icon">✍️</div><h3><span data-zh>AI 工具應用與提示詞設計</span><span data-en>AI Tools & Prompt Design</span></h3><p><span data-zh>規劃與優化提示詞，協助圖像生成、影片製作及文字內容產出。</span><span data-en>Plan and refine prompts for image generation, video creation, and content production.</span></p></article>
+          <article class="service-card"><div class="service-icon">🎨</div><h3><span data-zh>AI 視覺與影音創作</span><span data-en>AI Visuals & Video</span></h3><p><span data-zh>運用 AI 工具製作社群封面、視覺素材、動畫與影音創意。</span><span data-en>Create social covers, visual assets, animations, and video concepts with AI.</span></p></article>
+          <article class="service-card"><div class="service-icon">🌼</div><h3><span data-zh>品牌企劃與視覺方向</span><span data-en>Brand Planning & Art Direction</span></h3><p><span data-zh>整理品牌定位、目標客群、品牌故事、Moodboard 與視覺風格。</span><span data-en>Shape brand positioning, audiences, stories, moodboards, and visual direction.</span></p></article>
+          <article class="service-card"><div class="service-icon">📣</div><h3><span data-zh>數位行銷與內容企劃</span><span data-en>Digital Marketing & Content</span></h3><p><span data-zh>規劃社群內容、直播腳本、受眾分析及行銷溝通策略。</span><span data-en>Plan social content, livestream scripts, audience insights, and messaging.</span></p></article>
+          <article class="service-card"><div class="service-icon">💬</div><h3><span data-zh>LINE OA 客服流程規劃</span><span data-en>LINE OA Customer Journeys</span></h3><p><span data-zh>設計歡迎訊息、常見問題、自動回覆及圖文選單架構。</span><span data-en>Design welcome messages, FAQs, automated replies, and rich menu structures.</span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual" aria-hidden="true">🌱</div>
+          <div class="about-panel">
+            <div class="section-kicker"><span data-zh>關於我</span><span data-en>About me</span></div>
+            <h2><span data-zh>讓科技更有溫度，讓創意更靠近生活。</span><span data-en>Making technology feel more human, and creativity more practical.</span></h2>
+            <p><span data-zh>我擁有幼兒教育相關背景，也具備行政協調、溝通與活動支援經驗。過去的工作讓我重視使用者的感受、資訊的清晰度，以及內容是否真正符合需求。</span><span data-en>With a background in early childhood education, I bring experience in administration, coordination, communication, and event support. These experiences taught me to value people’s needs and clear, useful information.</span></p>
+            <p><span data-zh>接觸 AI 工具後，我開始將創意發想與實際應用結合，探索如何提升工作效率、製作視覺內容、規劃品牌體驗，並改善日常工作流程。我相信 AI 不只是生成內容的工具，也是整理思緒、拓展創意與實現想法的夥伴。</span><span data-en>Since discovering AI tools, I’ve been connecting creative thinking with practical applications—from visual content and brand experiences to more efficient workflows. I see AI as a partner for organizing ideas, expanding creativity, and making things happen.</span></p>
+            <div class="chips"><span class="chip">AI 應用</span><span class="chip">創意企劃</span><span class="chip">品牌視覺</span><span class="chip">數位內容</span><span class="chip">使用者思維</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span data-zh>經歷與實作</span><span data-en>Experience & Practice</span></div>
+          <h2><span data-zh>持續學習，也持續動手實踐</span><span data-en>Learning continuously, creating through practice</span></h2>
+        </div>
+        <div class="experience-list">
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>幼兒教育與教保</span><span data-en>Early Childhood Education</span></strong><span><span data-zh>具幼兒教育相關學歷與教保員資格。</span><span data-en>Education and qualification in early childhood care and education.</span></span></div></div>
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>幼兒園行政工作</span><span data-en>Kindergarten Administration</span></strong><span><span data-zh>親師溝通、行政協調及班級支援。</span><span data-en>Family communication, administration, and classroom support.</span></span></div></div>
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>研究助理</span><span data-en>Research Assistant</span></strong><span><span data-zh>累積資料整理與研究支援經驗。</span><span data-en>Experience in information organization and research support.</span></span></div></div>
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>AI 創作實作</span><span data-en>AI Creative Practice</span></strong><span><span data-zh>提示詞、圖像生成、影片動畫與音樂生成。</span><span data-en>Prompt design, image generation, video animation, and music generation.</span></span></div></div>
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>品牌與選品企劃</span><span data-en>Brand & Curated Product Planning</span></strong><span><span data-zh>品牌定位、視覺方向及手工藝選品品牌企劃。</span><span data-en>Brand positioning, art direction, and a handmade goods concept.</span></span></div></div>
+          <div class="timeline-card"><span class="timeline-dot"></span><div><strong><span data-zh>數位行銷與 LINE OA</span><span data-en>Digital Marketing & LINE OA</span></strong><span><span data-zh>客服流程、受眾分析、產品整理與直播腳本規劃。</span><span data-en>Customer journeys, audience analysis, product messaging, and livestream scripts.</span></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span data-zh>作品集</span><span data-en>Selected Work</span></div>
+          <h2><span data-zh>把想法，變成看得見的作品</span><span data-en>Ideas made visible</span></h2>
+          <p><span data-zh>以下為 AI、品牌與數位內容相關的企劃及創作實驗。</span><span data-en>Selected experiments in AI, branding, and digital content.</span></p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <div class="project-visual"><div class="mockup"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div></div></div>
+            <div class="project-info"><span class="tag"><span data-zh>AI 視覺設計</span><span data-en>AI Visual Design</span></span><h3><span data-zh>AI 教學報告封面設計</span><span data-en>AI Learning Report Cover</span></h3><p><span data-zh>以大學生為目標受眾，結合學習情境、AI 科技感與溫暖色調，規劃視覺封面。</span><span data-en>A warm-toned cover concept for university students, combining a learning context with a touch of AI.</span></p><span class="project-link disabled"><span data-zh>作品連結待補</span><span data-en>Link to be added</span></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual"><div class="mockup"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div></div></div>
+            <div class="project-info"><span class="tag"><span data-zh>AI 影片生成</span><span data-en>AI Video Generation</span></span><h3><span data-zh>Google Flow AI 動畫企劃</span><span data-en>Google Flow AI Animation</span></h3><p><span data-zh>設計巧克力蝙蝠從蛋糕飛起、朝鏡頭飛來並讓畫面轉黑的動畫情節。</span><span data-en>An animation concept where a chocolate bat takes off from a cake, flies toward the camera, and fades to black.</span></p><span class="project-link disabled"><span data-zh>作品連結待補</span><span data-en>Link to be added</span></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual"><div class="mockup"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div></div></div>
+            <div class="project-info"><span class="tag"><span data-zh>品牌企劃</span><span data-en>Brand Planning</span></span><h3><span data-zh>木漏｜手工藝選品品牌企劃</span><span data-en>Komore｜Handmade Brand Concept</span></h3><p><span data-zh>以創作者與消費者的相遇為核心，規劃品牌定位、故事、視覺方向與 Hero Visual。</span><span data-en>A brand concept centered on connecting makers and customers through story and visual direction.</span></p><span class="project-link disabled"><span data-zh>作品連結待補</span><span data-en>Link to be added</span></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual"><div class="mockup"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div></div></div>
+            <div class="project-info"><span class="tag"><span data-zh>LINE OA 流程</span><span data-en>LINE OA Workflow</span></span><h3><span data-zh>傳統早餐店客服自動化</span><span data-en>Breakfast Shop LINE OA</span></h3><p><span data-zh>規劃歡迎訊息、常見問題、自動回覆及六宮格圖文選單，方便點餐與查詢。</span><span data-en>A welcome flow, FAQs, automated replies, and a six-tile menu for a local breakfast shop.</span></p><span class="project-link disabled"><span data-zh>作品連結待補</span><span data-en>Link to be added</span></span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual"><div class="mockup"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div></div></div>
+            <div class="project-info"><span class="tag"><span data-zh>影音創作實驗</span><span data-en>Creative Experiment</span></span><h3><span data-zh>AI 影音與音樂創作實驗</span><span data-en>AI Video & Music Experiments</span></h3><p><span data-zh>探索 AI 音樂生成、節奏設定、風格融合與動畫提示詞設計。</span><span data-en>Exploring AI music, rhythm, style combinations, and animation prompt design.</span></p><span class="project-link disabled"><span data-zh>作品連結待補</span><span data-en>Link to be added</span></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="section-kicker"><span data-zh>一起聊聊你的想法</span><span data-en>Let’s talk about your ideas</span></div>
+          <h2><span data-zh>讓下一個好點子，開始發生。</span><span data-en>Let’s bring your next idea to life.</span></h2>
+          <p><span data-zh>歡迎交流 AI 應用、創意企劃與數位內容合作。</span><span data-en>Open to conversations about AI, creative planning, and digital content.</span></p>
+          <span class="button light" aria-disabled="true"><span data-zh>Email：待補</span><span data-en>Email: to be added</span></span>
+          <div class="chips" style="justify-content:center">
+            <span class="chip">LinkedIn：<span data-zh>待補</span><span data-en>Coming soon</span></span>
+            <span class="chip">Instagram：<span data-zh>待補</span><span data-en>Coming soon</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> 周庭如 Tingru Chou</span>
+      <span><span data-zh>以好奇心探索 AI，以實踐讓創意發生。</span><span data-en>Exploring AI with curiosity, bringing creativity to life through practice.</span></span>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("languageToggle");
+    const savedLanguage = localStorage.getItem("tingru-language");
+    if (savedLanguage === "en") {
+      document.body.classList.add("english");
+      document.documentElement.lang = "en";
+      toggle.textContent = "中";
+    }
+
+    toggle.addEventListener("click", () => {
+      const isEnglish = document.body.classList.toggle("english");
+      document.documentElement.lang = isEnglish ? "en" : "zh-Hant";
+      toggle.textContent = isEnglish ? "中" : "EN";
+      localStorage.setItem("tingru-language", isEnglish ? "en" : "zh");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
