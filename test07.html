@@ -304,8 +304,14 @@
       transform: rotate(-4deg);
     }
 
-    section { scroll-margin-top: 90px; }
-    .section { padding: 72px 0; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+section[id] {
+  scroll-margin-top: 24px;
+}
 
     .section-head {
       max-width: 760px;
