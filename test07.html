@@ -57,7 +57,7 @@
 
     body {
       margin: 0;
-      padding-left: 266px;
+      padding-left: 0;
       color: var(--text);
       background:
         radial-gradient(circle at 10% 12%, rgba(255, 197, 46, .13), transparent 18rem),
@@ -73,6 +73,28 @@
       width: min(1160px, calc(100% - 40px));
       margin: 0 auto;
     }
+
+    .menu-toggle {
+      position: fixed;
+      z-index: 30;
+      top: 24px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 15px;
+      color: var(--ink);
+      background: var(--yellow);
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      box-shadow: 4px 4px 0 var(--ink);
+      font-weight: 850;
+      cursor: pointer;
+      transition: left .25s ease, right .25s ease, transform .18s ease;
+    }
+
+    .menu-toggle:hover { transform: translate(-2px, -2px); }
+    .menu-toggle-icon { font-size: 19px; line-height: 1; }
 
     /* 左側段落選單 */
     .sidebar {
@@ -90,6 +112,28 @@
       border: 4px solid var(--ink);
       border-radius: 22px;
       box-shadow: 6px 6px 0 var(--ink);
+      transform: translateX(calc(-100% - 34px));
+      visibility: hidden;
+      transition: transform .25s ease, visibility .25s ease;
+    }
+
+    body.menu-open { padding-left: 266px; }
+
+    body.menu-open .sidebar {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    body.menu-open .menu-toggle { left: 224px; }
+
+    body.menu-open .menu-toggle-icon { transform: rotate(90deg); }
+
+    .menu-toggle-icon { transition: transform .2s ease; }
+
+    .sidebar-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .sidebar-logo {
@@ -596,42 +640,52 @@ section[id] {
       }
 
       .sidebar {
-        position: sticky;
-        top: 0;
+        top: 78px;
+        right: 12px;
         bottom: auto;
-        left: auto;
+        left: 12px;
         width: auto;
-        min-height: auto;
-        margin: 10px 14px 0;
-        padding: 10px 12px;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        border-radius: 16px;
+        max-height: calc(100vh - 94px);
+        overflow-y: auto;
+        padding: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 18px;
       }
 
-      .sidebar-logo { width: 38px; height: 38px; flex: 0 0 auto; }
-      .sidebar-name { display: none; }
+      body.menu-open .sidebar {
+        transform: translateY(0);
+      }
+
+      .sidebar-logo-row { justify-content: flex-start; gap: 12px; }
+      .sidebar-name { display: flex; margin: 0; }
+
+      .menu-toggle {
+        top: 12px;
+        left: 12px;
+      }
+
+      body.menu-open .menu-toggle {
+        left: auto;
+        right: 12px;
+      }
 
       .sidebar-links {
-        flex: 1;
-        flex-direction: row;
-        gap: 4px;
-        overflow-x: auto;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 20px;
       }
 
       .sidebar-links a {
-        flex: 0 0 auto;
-        padding: 7px 9px;
-        font-size: 12px;
+        padding: 10px 11px;
+        font-size: 14px;
       }
 
-      .menu-icon { display: none; }
+      .menu-icon { display: inline-block; }
 
       .sidebar .lang-button {
-        width: auto;
-        min-width: 46px;
-        margin: 0;
+        width: 100%;
+        margin-top: 20px;
       }
     }
 
@@ -645,8 +699,9 @@ section[id] {
 
     @media (max-width: 600px) {
       .container { width: min(100% - 28px, 1160px); }
-      .sidebar { margin: 8px 8px 0; }
-      .sidebar-links a { padding: 7px; font-size: 11px; }
+      .menu-toggle { top: 10px; left: 10px; }
+      body.menu-open .menu-toggle { right: 10px; }
+      .sidebar { top: 72px; right: 10px; left: 10px; max-height: calc(100vh - 82px); }
       .hero { padding-top: 36px; padding-bottom: 58px; gap: 30px; }
       .hero-copy { font-size: 15px; }
       .hero-art { min-height: 310px; }
@@ -663,12 +718,18 @@ section[id] {
 </head>
 
 <body>
-  <aside class="sidebar" aria-label="段落導覽">
-    <a class="sidebar-logo" href="#home" aria-label="回到首頁">T</a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebarMenu" aria-expanded="false" aria-label="開啟選單">
+    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+    <span data-zh>選單</span><span data-en>Menu</span>
+  </button>
 
+  <aside class="sidebar" id="sidebarMenu" aria-label="段落導覽" inert>
+    <div class="sidebar-logo-row">
+      <a class="sidebar-logo" href="#home" aria-label="回到首頁">T</a>
     <div class="sidebar-name">
       <strong>庭如 Tingru</strong>
       <span>AI × Creative</span>
+    </div>
     </div>
 
     <nav class="sidebar-links">
@@ -931,6 +992,23 @@ section[id] {
 
   <script>
     const languageToggle = document.getElementById("languageToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    function setMenuOpen(isOpen) {
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "收起選單" : "開啟選單");
+      sidebarMenu.inert = !isOpen;
+    }
+
+    menuToggle.addEventListener("click", () => {
+      setMenuOpen(!document.body.classList.contains("menu-open"));
+    });
+
+    sidebarMenu.querySelectorAll("a[href^='#']").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
 
     function setLanguage(language) {
       const isEnglish = language === "en";
