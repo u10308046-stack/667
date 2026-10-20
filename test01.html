@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人天賦潛能與未來 30 年職涯願景儀表板</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f4f7fa',
+                            100: '#e5ecf3',
+                            200: '#cfdce8',
+                            500: '#3a7bd5',
+                            600: '#00d2ff',
+                            800: '#1e3c72',
+                            900: '#102a45',
+                        },
+                        tech: {
+                            bg: '#f8fafc',
+                            card: '#ffffff',
+                            slate: '#64748b',
+                            accent: '#4f46e5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'glow': '0 0 20px rgba(59, 130, 246, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .tech-gradient-text {
+            background: linear-gradient(135deg, #1e3c72 0%, #3a7bd5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tech-bg-grid {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-tech-bg text-slate-800 font-sans antialiased min-h-screen tech-bg-grid flex flex-col">
+
+    <!-- 導航列 -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-gradient-to-tr from-brand-800 to-brand-500 rounded-xl text-white shadow-glow">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900">Talent Blueprint <span class="text-xs font-normal text-brand-500 bg-brand-50 px-2 py-0.5 rounded-full border border-brand-200">人本問題解決者</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                    <a href="#hedgehog" class="hover:text-brand-500 transition-colors">刺蝟原則</a>
+                    <a href="#talents" class="hover:text-brand-500 transition-colors">四大天賦</a>
+                    <a href="#trends" class="hover:text-brand-500 transition-colors">未來30年大趨勢</a>
+                    <a href="#careers" class="hover:text-brand-500 transition-colors">前瞻職涯策略</a>
+                    <a href="#roadmap" class="hover:text-brand-500 transition-colors">30年升級藍圖</a>
+                    <a href="#esbi" class="hover:text-brand-500 transition-colors">ESBI 躍升</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="p-2 text-slate-600 hover:text-slate-900">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 行動裝置選單 -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-white/95 border-b border-slate-200">
+            <a href="#hedgehog" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">刺蝟原則</a>
+            <a href="#talents" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">四大天賦</a>
+            <a href="#trends" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">未來30年大趨勢</a>
+            <a href="#careers" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">前瞻職涯策略</a>
+            <a href="#roadmap" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">30年升級藍圖</a>
+            <a href="#esbi" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-700">ESBI 躍升</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="relative py-16 md:py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600 shadow-sm mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>天賦模型 × WEF/OECD 未來趨勢疊加報告</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+                讓事情變得更好 <br class="hidden sm:inline"/>
+                <span class="tech-gradient-text">Human-centered Problem Solver</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                不盲目押注單一職稱，而是建立能夠跨越 2026–2055 的可攜式核心能力：<br/>
+                <span class="font-semibold text-slate-800">「理解人與問題 → 整合 AI 與資源 → 落地解決並優化體驗」</span>
+            </p>
+            
+            <!-- 定位轉換對比卡片 -->
+            <div class="max-w-3xl mx-auto grid sm:grid-cols-2 gap-4 text-left">
+                <div class="p-4 bg-rose-50/70 border border-rose-200 rounded-2xl text-xs text-rose-900">
+                    <span class="font-bold text-rose-600 block mb-1">❌ 避免狹隘的傳統定位</span>
+                    「幼教人員」／「行政人員」／「單純手作創作者」<br/>
+                    （容易受限於單一場域或被例行自動化取代）
+                </div>
+                <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-2xl text-xs text-emerald-900">
+                    <span class="font-bold text-emerald-600 block mb-1">✅ 升級為高價值的長期定位</span>
+                    「教育・文化・服務領域的 Program / Experience Manager」<br/>
+                    （跨領域整合人、問題、AI工具與落地運作）
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 pb-20 flex-grow">
+
+        <!-- Section 1: 刺蝟原則 & 三圈模型 -->
+        <section id="hedgehog" class="scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">🦔 刺蝟原則與獨特價值鏈</h2>
+                <p class="text-slate-600">不是「做什麼」，而是「怎麼讓事情變好」</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 圈 1 -->
+                <div class="glass-card rounded-2xl p-6 shadow-glass border-t-4 border-rose-500 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-4">
+                        <i data-lucide="heart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">❤️ 你熱愛的</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        創造、解決問題、變化、看到具體成果、讓人與事情都變得更好。保持從無到有（鉤針實作）的充能感。
+                    </p>
+                </div>
+                <!-- 圈 2 -->
+                <div class="glass-card rounded-2xl p-6 shadow-glass border-t-4 border-indigo-500 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center mb-4">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">🧠 你有機會做到卓越的</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        情境判斷 ＋ 換位思考 ＋ 資訊整理 ＋ 臨場救火 ＋ 可靠的落地執行力。
+                    </p>
+                </div>
+                <!-- 圈 3 -->
+                <div class="glass-card rounded-2xl p-6 shadow-glass border-t-4 border-emerald-500 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center mb-4">
+                        <i data-lucide="coins" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">💰 市場容易付錢的</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        「把事情搞定」與「交給她就能放心」。將這種放心感轉化為專案營運與體驗設計的專業。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 核心價值鏈 -->
+            <div class="mt-8 glass-card rounded-2xl p-6 sm:p-8 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 text-center">⛓️ 你的獨特價值鏈 (Human-centered Problem Solver)</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2 text-center text-xs sm:text-sm font-medium">
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">1. 觀察人</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">2. 理解情境</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">3. 抓住問題</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">4. 快速解法</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">5. 實際執行</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">6. 現場微調</div>
+                    <div class="bg-slate-900 text-white p-3 rounded-xl shadow-sm col-span-2 sm:col-span-1">7. 人與事變好</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 四大核心天賦 -->
+        <section id="talents" class="scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">🧩 四大核心天賦模型</h2>
+                <p class="text-slate-600">奠基於實際行動與溝通模式的關鍵特質</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 天賦 1 -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm border border-slate-200 flex space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <i data-lucide="flame" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
