@@ -22,7 +22,19 @@
       --shadow: 8px 8px 0 var(--ink);
       --radius: 28px;
     }
+.project-art.video-art {
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
 
+.project-art.video-art iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 0;
+}
     * { box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
@@ -816,6 +828,45 @@
             <div class="project-art"><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="mini-line short"></div><div class="mini-line"></div><div class="mini-block">🦇 →</div></div></div>
           </article>
 
+          <article class="project">
+  <div class="project-info">
+    <span class="tag">
+      <span data-zh>AI 動畫企劃</span>
+      <span data-en>AI Animation</span>
+    </span>
+
+    <h3>
+      <span data-zh>Google Flow AI 動畫企劃</span>
+      <span data-en>Google Flow AI Animation Concept</span>
+    </h3>
+
+    <p>
+      <span data-zh>設計巧克力蝙蝠從蛋糕上飛起、朝鏡頭飛來並讓畫面轉黑的動畫情節。</span>
+      <span data-en>A chocolate bat takes off from a cake, flies toward the camera, and the scene fades to black.</span>
+    </p>
+
+    <a
+      class="link-placeholder"
+      href="https://youtube.com/shorts/wEMuTWWmc_k"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span data-zh>在 YouTube 開啟影片 ↗</span>
+      <span data-en>Watch on YouTube ↗</span>
+    </a>
+  </div>
+
+  <div class="project-art video-art">
+    <iframe
+      src="https://www.youtube.com/embed/wEMuTWWmc_k"
+      title="Google Flow AI 動畫企劃影片"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  </div>
+</article>
                 
         </div>
       </div>
